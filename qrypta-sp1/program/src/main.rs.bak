@@ -1,0 +1,20 @@
+#![no_std]
+#![no_main]
+
+extern crate alloc;
+
+use sp1_zkvm::io;
+use sha2::{Digest, Sha256};
+
+#[sp1_zkvm::entrypoint]
+pub fn main() {
+    let message: alloc::vec::Vec<u8> = io::read();
+    let signature: alloc::vec::Vec<u8> = io::read();
+
+    let mut hasher = Sha256::new();
+    hasher.update(&message);
+    hasher.update(&signature);
+    let result = hasher.finalize();
+
+    io::commit(&result[..]);
+}

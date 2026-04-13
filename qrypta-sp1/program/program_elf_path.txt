@@ -1,0 +1,1 @@
+/home/perera93/qrypta-sp1/program/target/elf-compilation/riscv32im-succinct-zkvm-elf/release/program

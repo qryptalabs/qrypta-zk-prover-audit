@@ -1,0 +1,17 @@
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+*.tar.gz
+dist/
+coverage/
+
+qrypta-sp1/program/target/
+qrypta-sp1/genesis-prover/target/
+qrypta-sp1/genesis-prover/jobs/
+qrypta-sp1/genesis-prover/*.hex
+
+.DS_Store
+.vscode/
+.idea/

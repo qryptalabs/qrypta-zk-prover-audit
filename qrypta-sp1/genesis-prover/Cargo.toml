@@ -1,0 +1,9 @@
+[package]
+name = "qrypta-genesis-prover"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+sp1-sdk = "5"
+hex = "0.4"
+anyhow = "1"

@@ -1,0 +1,16 @@
+{
+  "name": "qrypta-zk-prover-audit",
+  "version": "1.0.0",
+  "description": "QRYPTA off-chain ZK prover service and SP1 proving flow prepared for CertiK audit",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "ethers": "^6.16.0",
+    "express": "^5.2.1"
+  }
+}
