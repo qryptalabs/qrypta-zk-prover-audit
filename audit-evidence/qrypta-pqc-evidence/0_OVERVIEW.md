@@ -52,12 +52,13 @@ qrypta-pqc-evidence/
 │   ├── test_vector.json          ← real keypair + signature + pqcRoot
 │   └── pqc_execution.log         ← real VPS execution output
 ├── integration/
+│   ├── authorization_binding.md
 │   ├── pqcRoot_derivation.md
 │   ├── mapping_pqcRoot_to_publicValues.md
 │   └── example_publicValues.hex
 ├── zk/
 │   ├── program_main.rs           ← SP1 circuit source
-│   ├── proof_sample.hex
+│   ├── proof_reference.md
 │   └── publicValues_from_proof.hex
 ├── onchain/
 │   └── validation_flow.md
