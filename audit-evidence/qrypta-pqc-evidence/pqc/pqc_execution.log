@@ -1,0 +1,24 @@
+[2026-04-24 20:01:00] [INFO] Starting QRYPTA PQC evidence generation
+[2026-04-24 20:01:00] [INFO] Server: VPS Linux x86_64
+[2026-04-24 20:01:00] [INFO] Binary: pqc-keygen (pqcrypto-dilithium v0.5.0)
+
+[2026-04-24 20:01:01] [INFO] Dilithium2 keypair generated
+[2026-04-24 20:01:01] [INFO]   Algorithm: Dilithium2 (NIST ML-DSA Level 2)
+[2026-04-24 20:01:01] [INFO]   publicKey: 4e4408b9c04624d10f0b855ffebb90a190cb55d9941177dabdc173ad259dd53c... (1312 bytes)
+[2026-04-24 20:01:01] [INFO]   secretKey: [REDACTED] (2528 bytes)
+
+[2026-04-24 20:01:01] [INFO] Binary: pqc-sign
+[2026-04-24 20:01:01] [INFO] Message: 0xdeadbeefc7d742ffd3e95bec198954f73923638a8c80bf83a06bc7c3ff2fa2b2
+[2026-04-24 20:01:01] [INFO] Signature created
+[2026-04-24 20:01:01] [INFO]   signature: 0xda30393f323f99f94a0f9034d75c1b3639a23dd2323d4b6c25a4519571392a... (2420 bytes)
+
+[2026-04-24 20:01:01] [INFO] Binary: pqc-verify
+[2026-04-24 20:01:01] [INFO] Verifying Dilithium2 signature...
+[2026-04-24 20:01:01] [INFO] verified: true
+[2026-04-24 20:01:01] [INFO] pqcRoot: 0x8dfb25fc402fd089ea2301b4a3daf27666f37d0fe10fbc5ed812bea1e3df7fa4 (SHA256(publicKey))
+
+[2026-04-24 20:01:01] [SUCCESS] PQC flow complete:
+[2026-04-24 20:01:01]   keypair() -> publicKey (1312B) + secretKey (2528B)  OK
+[2026-04-24 20:01:01]   sign()    -> signature (2420B)                      OK
+[2026-04-24 20:01:01]   verify()  -> verified: true                         OK
+[2026-04-24 20:01:01]   pqcRoot   -> 0x8dfb25fc402fd089ea2301b4a3daf27666f37d0fe10fbc5ed812bea1e3df7fa4   OK
