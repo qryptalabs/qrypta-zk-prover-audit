@@ -1,0 +1,61 @@
+=== QRYPTA PQC + ZK + ON-CHAIN FLOW ===
+Date: 2026-04-24
+
+PHASE 1: PQC — Dilithium2 Authorization
+===========================================
+
+[INFO] Transfer payload (what the user is authorizing):
+         from     : 0xb2d4a69c646d0c6b92fc6c700f5adc930f457704
+         to       : 0xb2d4a69c646d0c6b92fc6c700f5adc930f457704
+         amount   : 4000000000000000000 (4 QRYP)
+         nonce    : 1
+         isoRef   : Pago a Chase Bank
+         deadline : 1780031258
+
+[INFO] Message signed: from:to:amount:nonce:isoRef:deadline
+[INFO] = '0xb2d4a69c646d0c6b92fc6c700f5adc930f457704:0xb2d4a69c646d0c6b92fc6c700f5adc930f457704:4000000000000000000:1:Pago a Chase Bank:1780031258'
+[INFO] Message hex: 0x3078623264346136396336343664306336623932666336633730306635616463393330663435373730343a3078623264346136396336343664306336623932666336633730306635616463393330663435373730343a343030303030303030303030303030303030303a313a5061676f20612043686173652042616e6b3a31373830303331323538
+
+[INFO] pqc-keygen -> Dilithium2 keypair
+[INFO]   publicKey: 098e308f83fb5812f24d2433acfa84e2bd8ad95e544d02439a120491ee3762b7... (1312 bytes)
+[INFO]   secretKey: [REDACTED] (2528 bytes, never leaves user device)
+
+[INFO] pqc-sign(transferPayload, secretKey) -> signature (2420 bytes)
+[INFO]   Proves: user explicitly authorized this specific transfer
+
+[INFO] pqc-verify(publicKey, transferPayload, signature) ->
+[INFO]   verified: true
+[INFO]   CONCLUSION: Dilithium2 confirms sender authorized from:to:amount:nonce
+
+[INFO] pqcRoot = SHA256(publicKey) = 0x955940d056a905840b7e51493fd8fa256ed7154a0a62c7e6a1da171b39b4ef58
+[INFO]   This is the IDENTITY commitment registered on-chain
+[INFO]   It binds the Dilithium2 keypair to the sender address
+
+PHASE 2: INTEGRATION — pqcRoot enters publicValues
+====================================================
+
+[INFO] ABI-encoding publicValues (288 bytes)
+[INFO]   pqcRoot at bytes[128:160] = 0x955940d056a905840b7e51493fd8fa256ed7154a0a62c7e6a1da171b39b4ef58
+[INFO]   from, to, amount, nonce, deadline also in publicValues
+
+PHASE 3: ZK — SP1 Groth16
+==========================
+
+[INFO] SP1 circuit: pqcRoot != 0x00 -> PASS
+[INFO] io::commit_slice(&public_values) -> 288 bytes cryptographically bound
+[INFO] Groth16 proof generated
+
+PHASE 4: ON-CHAIN — BSC Mainnet
+================================
+
+[INFO] pv.pqcRoot == quantumPublicKeyRoots[sender] -> MATCH
+[INFO] sp1Gateway.verifyProof(programVKey, publicValues, proofBytes) -> PASS
+[INFO] TX: 0xb63f79131e50c0005be6cbb65a080d47252dbb0440b24e8b5e0d798483221d11
+[INFO] Block: #94460793 -- Status: SUCCESS
+
+SUMMARY
+=======
+Dilithium2.sign(transferPayload, sk) -> verified: true     AUTHORIZATION OK
+pqcRoot = SHA256(pk) == on-chain registered root           IDENTITY OK
+ZK proof binds all params (pqcRoot + from + to + amount)   BINDING OK
+sp1Gateway.verifyProof() PASSED on BSC Mainnet             VERIFIED OK
