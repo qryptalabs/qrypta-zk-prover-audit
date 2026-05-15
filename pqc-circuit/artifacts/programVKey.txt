@@ -1,0 +1,4 @@
+# SP1 Program Verification Key
+# SHA256 of SP1 vk — must match QryptaToken.programVKey() on-chain
+
+0x003457a9e5439f84f34a661756a0f5eaf6f53f7b65448ff98e418501d95d589f

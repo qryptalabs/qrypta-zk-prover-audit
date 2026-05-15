@@ -1,0 +1,6 @@
+# Compiled ELF Binary Info
+# Target: riscv32im-succinct-zkvm-elf
+# Toolchain: SP1 succinct 5.2.4
+
+SHA256:  820de8a6c56233e26b9f373dba804c1aade11d7c55b55167a10cb8c4d1475d70  /root/qrypta-sp1/program/target/elf-compilation/riscv32im-succinct-zkvm-elf/release/program
+Size:    -rwxr-xr-x 2 root root 444K May 14 02:26 /root/qrypta-sp1/program/target/elf-compilation/riscv32im-succinct-zkvm-elf/release/program

@@ -1,0 +1,20 @@
+[package]
+name = "qrypta-genesis-prover"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "qrypta-genesis-prover"
+path = "src/main.rs"
+
+[dependencies]
+# SP1 SDK — host-side proving client
+sp1-sdk = { version = "5.2.4", features = [] }
+
+# Utilities
+hex = "0.4"
+anyhow = "1.0"
+
+[build-dependencies]
+# Forces compilation of the circuit to riscv32im-succinct-zkvm-elf
+sp1-build = "5.2.4"

@@ -1,0 +1,23 @@
+[package]
+name = "qrypta-program"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# SP1 zkVM environment — provides io::read(), io::commit_slice(), etc.
+sp1-zkvm = "5.2.4"
+
+# NIST FIPS 204 ML-DSA-44 (Dilithium2) — post-quantum signature verification
+# Source: https://crates.io/crates/fips204
+# Author: Eric Schorn, NCC Group
+fips204 = { version = "0.4.6", features = ["ml-dsa-44"] }
+
+# SHA-256 for pqcRoot = SHA256(publicKey) binding
+sha2 = { version = "0.10", default-features = false }
+
+# getrandom stub required for RISC-V bare-metal (no OS RNG available in zkVM)
+getrandom = { version = "0.2", features = ["custom"] }
+
+[[bin]]
+name = "program"
+path = "src/main.rs"
